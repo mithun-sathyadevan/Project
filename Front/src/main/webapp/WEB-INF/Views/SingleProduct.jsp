@@ -208,16 +208,16 @@ img {
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="${images}/burger.jpg" /></div>
+						  <div class="tab-pane active" id="pic-1"><img src="${images}/${product.image}" /></div>
 						</div>
 						
 						
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">men's shoes fashion</h3>
+						<h3 class="product-title">Online Food</h3>
 						
-						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-						<h4 class="price">current price: <span>$180</span></h4>
+						<p class="product-description"><p>${product.details}</p>
+						<h4 class="price">current price: <span>Rs${product.price}</span></h4>
 						<div class="action">
 							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
 							<button class="add-to-cart btn btn-default" type="button">Buy</button>

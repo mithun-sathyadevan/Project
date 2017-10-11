@@ -70,6 +70,16 @@ SessionFactory sessionFactory;
 		session.close();
 		
 	}
+
+	@Override
+	public Product getProductById(int id) {
+		Session session=sessionFactory.openSession();
+		Product product =null;
+		session.beginTransaction();
+		product= (Product) session.createQuery("from Product where id="+id).uniqueResult();   
+		session.getTransaction().commit();
+		 return product;
+	}
 	
 
 }

@@ -136,7 +136,20 @@ public class Controller {
 	 
 	
 	 
-	 
+	 @RequestMapping(value = "/ShoppingCart")
+	    public String ShoppingCart() {
+	        
+		 
+	        return "Cart";
+
+	    }
+	 @RequestMapping(value = "/SingleProduct/{id}")
+	    public String singleDisplay(Model m,@PathVariable("id") int id) {
+	       Product product= productDao.getProductById(id);
+	       m.addAttribute("product", product);
+	        return "SingleProduct";
+
+	    }
 	 
 	 
 	 

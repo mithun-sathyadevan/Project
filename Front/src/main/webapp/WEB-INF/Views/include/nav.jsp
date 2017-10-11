@@ -15,7 +15,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="home">Home</a>
+                            <a href="${contextRoot}/home">Home</a>
                         </li>
                         <li class="dropdown"> <a  type="button" data-toggle="dropdown">CATEGORY
                                 <span class="caret"></span></a>
@@ -41,7 +41,7 @@
                             </c:if>
                         </li>
                         </c:if>
-                      <li> <a href="#">
+                      <li> <a href="${contextRoot}/ShoppingCart">
           <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
         </a></li>
                     </ul>

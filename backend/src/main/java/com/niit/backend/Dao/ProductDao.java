@@ -9,5 +9,6 @@ public void save(Product product);
 public List list();
 public List<Product> getProductsByCategory(int cid);
 public List<Product> getProductsByCategory(int cid,String pname);
+public Product getProductById(int id);
 public void delete(Integer id);
 }
