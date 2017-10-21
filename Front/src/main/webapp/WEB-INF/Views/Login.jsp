@@ -91,5 +91,9 @@
 		<marquee width="100%" behavior="alternate" bgcolor="pink">
 			Find the best and cheapest Food at Bangalore just a Click away from
 			you!!!Come on Hurry up!! </marquee>
+			  <!-- /.container -->
+
+      <%@include file="./include/Footer.jsp" %>
+    <!-- /.container -->
 </body>
 </html>

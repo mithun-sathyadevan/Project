@@ -124,7 +124,10 @@
 
 
 
+  <!-- /.container -->
 
+      <%@include file="./include/Footer.jsp" %>
+    <!-- /.container -->
 
 
 

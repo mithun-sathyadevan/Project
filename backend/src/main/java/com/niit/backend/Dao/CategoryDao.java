@@ -10,4 +10,5 @@ public interface CategoryDao {
 	public List list();
 	public void delete(Integer id);
 	public Category findById(Integer id);
+	public void update(Category category);
 }

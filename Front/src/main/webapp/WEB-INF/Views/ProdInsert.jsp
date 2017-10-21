@@ -52,16 +52,6 @@
 	border: 1px solid #ccc;
 }
 
-button {
-	background-color: #4CAF50;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	width: 50%;
-}
-
 /* Extra styles for the cancel button */
 .cancelbtn {
 	padding: 14px 20px;
@@ -103,8 +93,8 @@ button {
 </script>
 </head>
 <body>
- <%@include file="./include/nav.jsp" %>
- <br>
+	<%@include file="./include/nav.jsp"%>
+	<br>
 	<ul class="nav nav-tabs" id="myTab">
 		<li class="active"><a data-toggle="tab" href="#sectionA">Product</a></li>
 		<li><a data-toggle="tab" href="#sectionB">Category</a></li>
@@ -121,10 +111,11 @@ button {
 				method="post" enctype="multipart/form-data">
 				<div class="container">
 					<label><b>Name</b></label> <input type="text" name="name"
-						class="tex" required /> <label><b>Price</b></label> <input
-						type="number" name="price" class="tex"   required  />
-						 <label><b>Image</b></label>
-					<input name="image" type="file" class="tex" required ></input> <label><b>Category</b></label>
+						class="tex" required />
+					
+						 <label><b>Price</b></label> <input
+						type="number" name="price" class="tex" required /> <label><b>Image</b></label>
+					<input name="image" type="file" class="tex" required></input> <label><b>Category</b></label>
 					<select class="form-control" name="category">
 
 						<option value="">----Category---</option>
@@ -138,13 +129,10 @@ button {
 						<c:forEach items="${supplierlist}" var="sup">
 							<option value="${sup.sid}">${sup.sname}</option>
 						</c:forEach>
-					</select> <label><b>Details</b></label> <input name="details" class='tex'  required ></input>
-
-
-					<label><b>Colour</b></label> <input name="color" class="tex"  required></input>
-
-
-					<label><b>Quantity</b></label> <input type="number" name="quantity" class="tex"  required ></input>
+					</select> <label><b>Details</b></label> <input name="details" class='tex'
+						required></input> <label><b>Colour</b></label> <input
+						name="color" class="tex" required></input> <label><b>Quantity</b></label>
+					<input type="number" name="quantity" class="tex" required></input>
 
 
 					<div class="clearfix">
@@ -176,12 +164,23 @@ button {
 						<tr>
 							<td><c:out value="${category.cname}"></c:out></td>
 							<td class="text-center"><a class='btn btn-info btn-xs'
-								href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-								<a href="deleteCategory/${category.cid}"
+								href="#" data-toggle="collapse" data-target="#${category.cid}"><span
+									class="glyphicon glyphicon-edit"></span> Edit</a> <a
+								href="deleteCategory/${category.cid}"
 								class="btn btn-danger btn-xs"><span
 									class="glyphicon glyphicon-remove"></span> Del</a></td>
 						</tr>
+						<tr>
+							<td><div id="${category.cid}" class="collapse">
 
+									<form action="updateCategory/${category.cid}" method="post">
+										<input name="category" style="width: 550px;"
+											placeholder="Enter Name" required="required"></input>
+										<button type="submit" class="btn btn-primary">Update</button>
+									</form>
+								</div>
+								</form></td>
+						</tr>
 
 					</div>
 				</c:forEach>
@@ -234,10 +233,22 @@ button {
 						<tr>
 							<td><c:out value="${supplier.sname}"></c:out></td>
 							<td class="text-center"><a class='btn btn-info btn-xs'
-								href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-								<a href="deleteSupplier/${supplier.sid}"
+								href="#" data-toggle="collapse" data-target="#${supplier.sid}"><span
+									class="glyphicon glyphicon-edit"></span> Edit</a> <a
+								href="deleteSupplier/${supplier.sid}"
 								class="btn btn-danger btn-xs"><span
 									class="glyphicon glyphicon-remove"></span> Del</a></td>
+						</tr>
+						<tr>
+							<td><div id="${supplier.sid}" class="collapse">
+
+									<form action="updateSupplier/${supplier.sid}" method="post">
+										<input name="supplier" style="width: 550px;"
+											placeholder="Enter Name" required="required"></input>
+										<button type="submit" class="btn btn-primary">Update</button>
+									</form>
+								</div>
+								</form></td>
 						</tr>
 
 
@@ -286,7 +297,8 @@ button {
 
 
 						<tr>
-							<td><img src ="${images}/${product.image}" height="50px" width="50px"/></td>
+							<td><img src="${images}/${product.image}" height="50px"
+								width="50px" /></td>
 							<td><c:out value="${product.name}"></c:out></td>
 							<td><c:out value="${product.price}"></c:out></td>
 							<td><c:out value="${product.category.cname}"></c:out></td>
@@ -294,18 +306,70 @@ button {
 							<td><c:out value="${product.quantity}"></c:out></td>
 							<td><c:out value="${product.details}"></c:out></td>
 							<td><c:out value="${product.color}"></c:out></td>
-							<td class="text-center"><a class='btn btn-info btn-xs'
-								href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-								<a href="deleteProduct/${product.id}"
+							<td class="text-center"><a
+								data-toggle="modal" data-target="#myModal"><span
+									class="glyphicon glyphicon-edit"></span> Edit</a>
+
+
+
+								<div class="modal fade" id="myModal" role="dialog">
+									<br> <br> <br>
+									<br> <br> <br>
+									<form action="editProduct/${product.id}" style="border: 1px solid #ccc"
+										method="post" enctype="multipart/form-data">
+										<div class="container">
+											 <input type="text" name="name" class="tex" value="${product.name }"
+												placeholder="Enter product name" required /> 
+											<input type="number" name="price" class="tex"
+												placeholder="Enter product price" required />
+											<input name="image" type="file" class="tex" required></input>
+											<select class="form-control"
+												name="category">
+
+												<option value="">----Category---</option>
+												<c:forEach items="${categorylist}" var="cate">
+													<option value="${cate.cid}">${cate.cname}</option>
+												</c:forEach>
+											</select> <select class="form-control"
+												name="supplier">
+
+												<option value="">----Supplier---</option>
+												<c:forEach items="${supplierlist}" var="sup">
+													<option value="${sup.sid}">${sup.sname}</option>
+												</c:forEach>
+											</select><input name="details"
+												class='tex' placeholder="Enter product details" required></input>
+
+
+										 <input name="color" class="tex"
+												placeholder="Enter product color" required></input>
+											<input type="number" name="quantity" class="tex"
+												placeholder="Enter product quantity" required></input>
+
+<br>
+											<div class="clearfix">
+											<br>
+												<button type="submit" class="signupbtn">Update Product<br></button><br>
+												<br>
+											</div>
+										</div>
+									</form>
+
+
+								</div> <a href="deleteProduct/${product.id}"
 								class="btn btn-danger btn-xs"><span
 									class="glyphicon glyphicon-remove"></span> Del</a></td>
+
 						</tr>
+
 
 
 					</div>
 				</c:forEach>
 			</table>
 		</div>
+		 <%@include file="./include/Footer.jsp" %>
 	</div>
+	  
 </body>
 </html>

@@ -4,3 +4,5 @@
 /home/mithun/eclipse-workspace/backend/src/test/java/com/niit/backend/AppTest.java
 /home/mithun/eclipse-workspace/backend/src/test/java/com/niit/backend/TestJdbc.java
 /home/mithun/eclipse-workspace/backend/src/test/java/com/niit/backend/TestProductDao.java
+/home/mithun/eclipse-workspace/backend/src/test/java/com/niit/backend/TestCartDao.java
+/home/mithun/eclipse-workspace/backend/src/test/java/com/niit/backend/TestOrderDao.java

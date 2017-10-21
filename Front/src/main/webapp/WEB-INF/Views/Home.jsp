@@ -198,20 +198,9 @@
     </div>
     <!-- /.container -->
 
-    <div class="container">
+     <!-- /.container -->
 
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </footer>
-
-    </div>
+      <%@include file="./include/Footer.jsp" %>
     <!-- /.container -->
 
     

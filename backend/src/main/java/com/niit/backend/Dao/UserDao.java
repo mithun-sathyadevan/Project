@@ -11,5 +11,5 @@ public interface UserDao {
 	public boolean validate(String name, String password);
 	
 	
-	public User get(String email);
+	public User getById(String email);
 }

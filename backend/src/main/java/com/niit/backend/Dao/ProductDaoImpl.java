@@ -16,7 +16,7 @@ import com.niit.backend.domain.User;
 public class ProductDaoImpl implements ProductDao{
 @Autowired
 SessionFactory sessionFactory;
-	@Override
+	
 	public void save(Product product) {
 		System.out.println("hi");
 		Session ses=sessionFactory.openSession();
@@ -29,7 +29,6 @@ SessionFactory sessionFactory;
 		
 	}
 
-	@Override
 	public List list() {
 		Session session=sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -39,7 +38,6 @@ SessionFactory sessionFactory;
 		return product;
 	}
 
-	@Override
 	public List<Product> getProductsByCategory(int cid) {
 		Session session=sessionFactory.openSession();
 		List<Product> products =null;
@@ -49,7 +47,7 @@ SessionFactory sessionFactory;
 		 return products;
 		}
 
-	@Override
+	
 	public List<Product> getProductsByCategory(int cid, String pname) {
 	/*	Session session=sessionFactory.openSession();
 		List<Product> products =null;
@@ -60,7 +58,7 @@ SessionFactory sessionFactory;
 		return null;
 	}
 
-	@Override
+	
 	public void delete(Integer id) {
 		Session session=sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -71,7 +69,6 @@ SessionFactory sessionFactory;
 		
 	}
 
-	@Override
 	public Product getProductById(int id) {
 		Session session=sessionFactory.openSession();
 		Product product =null;
@@ -79,6 +76,16 @@ SessionFactory sessionFactory;
 		product= (Product) session.createQuery("from Product where id="+id).uniqueResult();   
 		session.getTransaction().commit();
 		 return product;
+	}
+
+	@Override
+	public void update(Product product) {
+		Session session=sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		
+		session.update(product);
+		session.getTransaction().commit();
+		
 	}
 	
 

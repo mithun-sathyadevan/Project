@@ -36,8 +36,7 @@ Session session=sessionFactory.getCurrentSession();
 	}
 
 
-	@Override
-	public List list() {
+public List list() {
 		Session session=sessionFactory.getCurrentSession();
 		session.beginTransaction();
 		List<User> Employee=(List) session.createQuery("FROM User").getResultList();
@@ -63,8 +62,7 @@ Session session=sessionFactory.getCurrentSession();
 	}
 
 
-	@Override
-	public User get(String email) {
+	public User getById(String email) {
 		Session session=sessionFactory.openSession();
 		session.beginTransaction();
 		User u=session.get(User.class, email);

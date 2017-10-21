@@ -57,6 +57,14 @@
 </dependency>
 
 
+<dependency>
+ <groupId>com.niit</groupId>
+  <artifactId>backend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+
+
+   
 
 
  <dependency>
@@ -161,14 +169,6 @@
 
 
 
-<dependency>
- <groupId>com.niit</groupId>
-  <artifactId>backend</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-</dependency>
-
-
-   
   
     
   </dependencies>

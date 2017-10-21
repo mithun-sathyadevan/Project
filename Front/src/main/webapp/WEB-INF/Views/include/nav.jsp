@@ -29,11 +29,11 @@
                             <a href="${contextRoot}/Contact">Contact</a>
                         </li>
     <c:if test="${pageContext.request.userPrincipal.name== null}">                        
-                        <li>    <a href="Login">Login</a></c:if></li>
+                        <li>    <a href="${contextRoot}/Login">Login</a></c:if></li>
                              <c:if test="${pageContext.request.userPrincipal.name!= null}">
     
     <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
-                           <li> <a href="Logout">Logout</a>
+                           <li> <a href="${contextRoot}/Logout">Logout</a>
                         </li>
                         <li>
                         <c:if test="${pageContext.request.userPrincipal.name  == 'ms111mithun@gmail.com'}">
@@ -41,7 +41,7 @@
                             </c:if>
                         </li>
                         </c:if>
-                      <li> <a href="${contextRoot}/ShoppingCart">
+                      <li> <a href="${contextRoot}/ShoppingCart/${pageContext.request.userPrincipal.name}/">
           <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
         </a></li>
                     </ul>

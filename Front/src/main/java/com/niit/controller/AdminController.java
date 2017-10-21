@@ -112,11 +112,74 @@ public class AdminController {
 	     ///   return "ProdInsert";
 
 	    }
-	 
+	 @RequestMapping(value="/updateCategory/{id}")
+	    public String updateCategory(@PathVariable("id") int id,HttpServletRequest request) {
+		 Category category=categoryDao.findById(id);
+		 category.setCname(request.getParameter("category"));
+		 System.out.println("haimithran"+request.getParameter("category"));
+		 categoryDao.update(category);
+	        return "redirect:/Admin";
+	     ///   return "ProdInsert";
+
+	    }
+	 @RequestMapping(value="/updateSupplier/{id}")
+	    public String updateSupplier(@PathVariable("id") int id,HttpServletRequest request) {
+		 Supplier supplier=supplierDao.findById(id);
+		 supplier.setSname(request.getParameter("supplier"));
+		 System.out.println("haimithran"+request.getParameter("supplier"));
+		 supplierDao.update(supplier);
+	        return "redirect:/Admin";
+	     ///   return "ProdInsert";
+
+	    }
 	 
 	 @RequestMapping(value = "/addProduct")
 	    public String addProduct(HttpServletRequest request, @ModelAttribute("cmd") Category category,@ModelAttribute("cmd1") Supplier supplier,@RequestParam("image") MultipartFile uploadFile) {
 	          	Product product=new Product();
+	        	product.setDetails(request.getParameter("details"));
+	        	product.setColor(request.getParameter("color"));
+	        	product.setName(request.getParameter("name"));
+	        	product.setPrice(Integer.parseInt(request.getParameter("price")));
+	      
+	        	product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+	       
+	        	String filepath=request.getSession().getServletContext().getRealPath("/");
+	        	String filename=uploadFile.getOriginalFilename();
+	        	product.setImage(filename);
+	        	category=categoryDao.findById(Integer.parseInt(request.getParameter("category")));
+	        	product.setCategory(category);
+	        	product.setSupplier(supplierDao.findById(Integer.parseInt(request.getParameter("supplier"))));
+	     
+	        	System.out.println("filepath    -------------------"+filepath+"     "+filename);
+	        	
+	        	productDao.save(product);
+	        	try
+	        	{
+	        	byte imagebyte[]=uploadFile.getBytes();
+	        	File file=new File(filepath+"/resources/images/"+filename);
+	        	uploadFile.transferTo(file);
+	        	BufferedOutputStream fos=new BufferedOutputStream(new FileOutputStream(filepath+"/resources/images/"+filename));
+	        	fos.write(imagebyte);
+	        	fos.close();
+	        	  return "redirect:/Admin";
+	        	}
+	         catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	        
+	     
+	        return "ProdInsert";
+	        
+
+	 }
+	 
+	 @RequestMapping(value = "/editProduct/{id}")
+	    public String editProduct(HttpServletRequest request, @ModelAttribute("cmd") Category category,@ModelAttribute("cmd1") Supplier supplier,@RequestParam("image") MultipartFile uploadFile,@PathVariable("id") Integer id) {
+	          	Product product=new Product();
+	          	product.setId(id);
 	        	product.setDetails(request.getParameter("details"));
 	        	product.setColor(request.getParameter("color"));
 	        	product.setName(request.getParameter("name"));
@@ -133,7 +196,7 @@ public class AdminController {
 	     
 	        	System.out.println("filepath    -------------------"+filepath+"     "+filename);
 	        	
-	        	productDao.save(product);
+	        	productDao.update(product);
 	        	try
 	        	{
 	        	byte imagebyte[]=uploadFile.getBytes();

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.niit.backend.domain.Cart;
 import com.niit.backend.domain.Category;
+import com.niit.backend.domain.Order;
 import com.niit.backend.domain.Product;
 import com.niit.backend.domain.Supplier;
 import com.niit.backend.domain.User;
@@ -51,7 +52,7 @@ public class HibernateConfig {
         lsf.addProperties(hibernateProperties);
        // lsf.addAnnotatedClasses(User.class);
         //return lsf.buildSessionFactory();
-       Class classes[]={User.class,Category.class,Product.class,Supplier.class,Cart.class};
+       Class classes[]={User.class,Category.class,Product.class,Supplier.class,Cart.class,Order.class};
         
         return lsf.addAnnotatedClasses(classes).buildSessionFactory();
     }

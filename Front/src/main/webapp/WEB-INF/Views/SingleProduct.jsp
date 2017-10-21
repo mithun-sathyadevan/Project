@@ -200,7 +200,7 @@ img {
   </head>
 
   <body>
-	
+	<c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
 	<div class="container">
 		<div class="card">
 			<div class="container-fliud">
@@ -218,15 +218,24 @@ img {
 						
 						<p class="product-description"><p>${product.details}</p>
 						<h4 class="price">current price: <span>Rs${product.price}</span></h4>
+						<form action="${contextRoot}/addCart/${product.id}/${pageContext.request.userPrincipal.name}/">
+						<h4 class="price">Quantity: <input type="number" name="quantity" min="1" max="${product.quantity}" required></h4>
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
-							<button class="add-to-cart btn btn-default" type="button">Buy</button>
+						<button class="add-to-cart btn btn-default" type="submit" name="addbutton" value="add" >add to cart</button>
+						
+						<a href="${contextRoot}/buyProduct/${product.id}/<%request.getParameter("quantity");%>"><button class="add-to-cart btn btn-default" type="button" name="buybutton" value="buy">Buy</button></a>
 						</div>
+						</form>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	  <!-- /.container -->
+
+      <%@include file="./include/Footer.jsp" %>
+    <!-- /.container -->
   </body>
 </html>
 

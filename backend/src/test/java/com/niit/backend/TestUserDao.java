@@ -34,12 +34,13 @@ public class TestUserDao {
 	public void check() {
 		User u=new User();
 		u.setEnabled(true);
-		u.setRole("ROLE_USER");
-		u.setName("krishna2");
+		u.setRole("ROLE_ADMIN");
+		u.setName("Mithun s");
 		u.setCity("bangalore");
 		u.setNumber("4577777");
 		u.setPassword("p");
-		u.setId("ms111mithu@gmail.com");
+		u.setId("ms111mithun@gmail.com");
+		u.setAddress("Pathiyante kunnerl eruva west kareelakulangaram po kayanmkulam pin:690572");
 		u.setEnabled(true);
 		userDao.save(u);
 		

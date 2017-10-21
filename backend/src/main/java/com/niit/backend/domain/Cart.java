@@ -8,7 +8,6 @@ public class Cart {
 	@Id
 	@GeneratedValue
 	int cartid;
-	int orderid;
 	int price;
 	int quantity;
 	String name;
@@ -28,12 +27,7 @@ public class Cart {
 	public void setCartid(int cartid) {
 		this.cartid = cartid;
 	}
-	public int getOrderid() {
-		return orderid;
-	}
-	public void setOrderid(int orderid) {
-		this.orderid = orderid;
-	}
+	
 	public int getPrice() {
 		return price;
 	}

@@ -14,7 +14,7 @@ import com.niit.backend.domain.User;
 public class SupplierDaoImpl implements SupplierDao{
 @Autowired
 SessionFactory sessionFactory;
-	@Override
+
 	public void save(Supplier supplier) {
 		// TODO Auto-generated method stub
 		Session ses=sessionFactory.getCurrentSession();
@@ -23,7 +23,6 @@ SessionFactory sessionFactory;
 		ses.getTransaction().commit();
 	}
 
-	@Override
 	public List<Supplier> list() {
 		Session session=sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -34,7 +33,7 @@ SessionFactory sessionFactory;
 		return supplier;
 	}
 
-	@Override
+	
 	public void delete(Integer id) {
 		Session session=sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -46,7 +45,6 @@ SessionFactory sessionFactory;
 		session.close();
 		
 	}
-	@Override
 	public Supplier findById(Integer id) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
@@ -54,6 +52,14 @@ SessionFactory sessionFactory;
 		Supplier supplier=(Supplier)session.get(Supplier.class, id);
 		session.close();
 		return supplier;
+	}
+
+	public void update(Supplier supplier) {
+		Session session=sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.update(supplier);
+		session.getTransaction().commit();
+		
 	}
 
 }

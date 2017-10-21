@@ -85,7 +85,7 @@ button {
 
 <f:form action="newRegister" style="border:1px solid #ccc" method="post" modelAttribute="cmd">
   <div class="container">
-  <f:errors path="email"></f:errors>
+ 
   	 <f:label path="name"><b>Name</b></f:label>
     <f:input  placeholder="Enter Name" path="name" required="required"></f:input>
    
@@ -96,16 +96,19 @@ button {
     
     
     
-    <f:label path="email"><b>Email</b></f:label>
-    <f:input  placeholder="Enter Email" path="email" required="required"></f:input>
-    <f:errors   path="email" cssClass="error"></f:errors>
+    <f:label path="id"><b>Email</b></f:label>
+    <f:input  placeholder="Enter Email" path="id" required="required"></f:input>
+    <f:errors   path="id" cssClass="error"></f:errors>
+    
+    <f:label path="address"><b>Address</b></f:label>
+    <f:input  placeholder="address" path="address" required="required"></f:input>
     
      <f:label path="city"><b>City</b></f:label>
     <f:input  placeholder="City" path="city" required="required"></f:input>
     
    
-    <f:label path="psw"><b>Password</b></f:label>
-    <f:input  placeholder="Enter Password" path="psw" required="required"></f:input>
+    <f:label path="password"><b>Password</b></f:label>
+    <f:input  placeholder="Enter Password" path="password" required="required"></f:input>
 	
   
     <div class="clearfix">
@@ -114,5 +117,9 @@ button {
   </div>
 </f:form>
 
+  <!-- /.container -->
+
+      <%@include file="./include/Footer.jsp" %>
+    <!-- /.container -->
 </body>
 </html>

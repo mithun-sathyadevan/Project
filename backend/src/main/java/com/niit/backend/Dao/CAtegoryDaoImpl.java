@@ -14,7 +14,7 @@ import com.niit.backend.domain.Supplier;
 public class CAtegoryDaoImpl implements CategoryDao{
 	@Autowired
 	SessionFactory sessionFactory;
-	@Override
+	
 	public void save(Category category) {
 		Session ses=sessionFactory.getCurrentSession();
 		ses.beginTransaction();
@@ -25,7 +25,6 @@ public class CAtegoryDaoImpl implements CategoryDao{
 		
 	}
 
-	@Override
 	public List list() {
 		Session session=sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -35,7 +34,6 @@ public class CAtegoryDaoImpl implements CategoryDao{
 		return category;
 	}
 
-	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
@@ -48,7 +46,6 @@ public class CAtegoryDaoImpl implements CategoryDao{
 		session.close();
 	}
 
-	@Override
 	public Category findById(Integer id) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
@@ -57,6 +54,16 @@ public class CAtegoryDaoImpl implements CategoryDao{
 		System.out.println("inside");
 		session.close();
 		return category;
+	}
+
+	public void update(Category category) {
+		Session session=sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		
+		session.update(category);
+		session.getTransaction().commit();
+		// TODO Auto-generated method stub
+		
 	}
 
 }

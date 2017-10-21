@@ -10,4 +10,5 @@ public void save(Supplier supplier);
 public void delete(Integer id);
 public List<Supplier> list();
 public Supplier findById(Integer id);
+public void update(Supplier supplier);
 }

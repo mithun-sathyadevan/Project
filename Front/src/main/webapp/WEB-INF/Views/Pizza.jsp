@@ -175,6 +175,9 @@
 
     
              
+  <!-- /.container -->
 
+      <%@include file="./include/Footer.jsp" %>
+    <!-- /.container -->
 </body>
 </html>

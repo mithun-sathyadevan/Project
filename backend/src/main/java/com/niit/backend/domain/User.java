@@ -1,7 +1,13 @@
 package com.niit.backend.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
@@ -22,7 +28,23 @@ public class User {
 	String id;
 	String city;
 	String password;
+	String address;
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public Set<Order> getOrder() {
+		return order;
+	}
+	public void setOrder(Set<Order> order) {
+		this.order = order;
+	}
 	private boolean enabled;
+	@OneToMany(mappedBy="user",cascade = CascadeType.ALL)
+	Set<Order> order=new HashSet<Order>();
 	public boolean isEnabled() {
 		return enabled;
 	}
