@@ -95,6 +95,10 @@
 <body>
 	<%@include file="./include/nav.jsp"%>
 	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<ul class="nav nav-tabs" id="myTab">
 		<li class="active"><a data-toggle="tab" href="#sectionA">Product</a></li>
 		<li><a data-toggle="tab" href="#sectionB">Category</a></li>
@@ -307,20 +311,20 @@
 							<td><c:out value="${product.details}"></c:out></td>
 							<td><c:out value="${product.color}"></c:out></td>
 							<td class="text-center"><a
-								data-toggle="modal" data-target="#myModal"><span
+								data-toggle="modal" data-target="#myModal${product.id}"><span
 									class="glyphicon glyphicon-edit"></span> Edit</a>
 
 
 
-								<div class="modal fade" id="myModal" role="dialog">
+								<div class="modal fade" id="myModal${product.id}" role="dialog">
 									<br> <br> <br>
 									<br> <br> <br>
 									<form action="editProduct/${product.id}" style="border: 1px solid #ccc"
 										method="post" enctype="multipart/form-data">
 										<div class="container">
-											 <input type="text" name="name" class="tex" value="${product.name }"
+											 <input type="text" name="name" class="tex" value="${product.name}"
 												placeholder="Enter product name" required /> 
-											<input type="number" name="price" class="tex"
+											<input type="number" name="price" class="tex" value="${product.price}"
 												placeholder="Enter product price" required />
 											<input name="image" type="file" class="tex" required></input>
 											<select class="form-control"
@@ -338,11 +342,11 @@
 													<option value="${sup.sid}">${sup.sname}</option>
 												</c:forEach>
 											</select><input name="details"
-												class='tex' placeholder="Enter product details" required></input>
+												class='tex' placeholder="Enter product details"  value="${product.details}"required></input>
 
 
 										 <input name="color" class="tex"
-												placeholder="Enter product color" required></input>
+												placeholder="Enter product color" value="${product.color}"required></input>
 											<input type="number" name="quantity" class="tex"
 												placeholder="Enter product quantity" required></input>
 

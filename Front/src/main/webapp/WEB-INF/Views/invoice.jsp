@@ -34,7 +34,9 @@
        <!-- Navigation -->
     <%@include file="./include/nav.jsp" %>
 	<br><br>
+	<br>
 	<div class="container">
+	<br>
 		<form  class="form-horizontal" action="checkout1">
 			<fieldset>
 			  <div class="form-group">

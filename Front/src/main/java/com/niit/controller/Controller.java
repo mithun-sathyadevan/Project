@@ -89,6 +89,7 @@ public class Controller {
 
 	@RequestMapping("/checkout")
 	public ModelAndView checkout(HttpServletRequest request) {
+		System.out.println("doitttttttt");
 		ModelAndView mav = new ModelAndView("checkout");
 		Principal principal = request.getUserPrincipal();
 		String userEmail = principal.getName();
@@ -98,7 +99,7 @@ public class Controller {
 		mav.addObject("user", u);
 		mav.addObject("total","cart");
 		mav.addObject("cart", cart);
-
+	
 		return mav;
 
 	}
@@ -165,7 +166,11 @@ public class Controller {
 	public String buyProduct(Model m,HttpServletRequest request ,@PathVariable("id") int id) {
 		Product product = productDao.getProductById(id);
 		Principal principal = request.getUserPrincipal();
+		
 		String userEmail = principal.getName();
+		if(userEmail==null)
+			return "Login";
+		System.out.println("trappppppp");
 		User u = userDao.getById(userEmail);
 		List<Cart> cart=cartDao.listByUser("-1");
 		System.out.println("Broi this is in");

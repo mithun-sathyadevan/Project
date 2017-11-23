@@ -90,13 +90,12 @@
      <form action="${pageContext.request.contextPath}/invoiceprocess"  method="post">
             
             <c:set var="srk2" value="0"></c:set>
-             <c:if test="${not empty total}">
-            <c:set var="srk2" value="${total}"></c:set>
-             </c:if>
+            <%--  <c:if test="${not empty total}"> --%>
+         <%--    <c:set var="srk2" value="${total}"></c:set> --%>
+            <%--  </c:if> --%>
             <c:if test="${not empty cart}">
-    <c:forEach var="c" items="${cart}">
-        <c:set var="srk2" value="${srk2 + c.price * c.quantity }"></c:set>   
-                
+    <c:forEach var="c" items="${cart}">   
+        <c:set var="srk2" value="${srk2 + c.price * c.quantity }"></c:set>        
               </c:forEach>  </c:if>
                 <div class="well">
                  <table class="tbdetail">
